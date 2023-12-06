@@ -1,0 +1,25 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    background: #00050F;
+    color: #ffffff;
+}
+
+a {
+    text-decoration: none;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

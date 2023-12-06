@@ -1,0 +1,137 @@
+.courses_card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px;
+    border-radius: 22px;
+    background: #181A1E;
+    height: 280px;
+
+    &__content {
+        width: 50%;
+    }
+
+    &__format {
+        color: #9789E9;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 14px;
+        text-transform: uppercase;
+    }
+
+    &__title {
+        color: #FFF;
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 24px;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        padding: 20px 0;
+    }
+
+    &__info {
+        list-style: disc;
+        margin-left: 15px;
+        margin-bottom: 20px;
+
+        &_item {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 24px;
+        }
+    }
+
+    &__prices {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+    }
+
+    &__promotion {
+        color: #ffffff;
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 24px;
+        border-radius: 5px;
+        background: #5B43E9;
+        padding: 0 7px;
+    }
+
+    &__newPrice {
+        font-size: 17px;
+        font-weight: 700;
+        line-height: 25.5px;
+        padding-top: 4px;
+    }
+
+    &__oldPrice {
+        font-size: 13px;
+        font-weight: 400;
+        line-height: 24px;
+        text-decoration-line: line-through;
+    }
+
+    &__more {
+        color: #ffffff;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 15px;
+        border-radius: 20px;
+        background: #5B43E9;
+        padding: 10px 20px;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+
+        &:hover {
+            background: #ffffff;
+            color: #000000;
+        }
+    }
+
+    &__block {
+        width: 35%;
+        &_img {
+            width: 100%;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .courses_card {
+        height: 245px;
+
+        &__content {
+            width: 100%;
+        }
+        &__block {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 425px) {
+    .courses_card {
+        padding: 30px 15px;
+        height: 200px;
+
+        &__format {
+            font-size: 12px;
+        }
+
+        &__title {
+            font-size: 14px;
+            padding: 10px 0;
+        }
+
+        &__info {
+            &_item {
+                font-size: 12px;
+            }
+        }
+
+        &__more {
+            font-size: 12px;
+            font-weight: 500;
+        }
+    }
+}
