@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Link } from 'react-router-dom'
 import { PartnersList } from '../../../consts'
 import PagesLayout from '../../../elements/layouts/PagesLayouts'
 
@@ -18,14 +17,6 @@ export const Partners = () => {
                 <p className="partners__text">
                     Нам доверяют компании по всему миру, пользуются миллионы пользователей
                 </p>
-                <div
-                    
-                    className="partners__btn"
-                >
-                    <Link to="/partners">
-                        Читать подробнее
-                    </Link>
-                </div>
 
                 <div className="partners__wrapper">
                     {

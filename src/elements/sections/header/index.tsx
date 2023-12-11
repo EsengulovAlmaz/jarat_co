@@ -2,7 +2,7 @@ import React from 'react'
 import PagesLayout from '../../layouts/PagesLayouts'
 
 import './index.scss'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 
 interface IHeaderList {
   id: number
@@ -39,9 +39,9 @@ const headerList: IHeaderList[] = [
 ]
 
 export const Header = () => {
-  // const { pathname } = useLocation()
+  const { pathname } = useLocation()
   const [menu, setMenu] = React.useState<boolean>(false)
-  
+
   return (
     <PagesLayout>
         <header className="header">
@@ -54,7 +54,10 @@ export const Header = () => {
               {
                 headerList.map(({id, title, path}) => (
                   <li key={id} className="header__list_item">
-                    <Link to={path} className="header__list_link">
+                    <Link 
+                      to={path} 
+                      className={`header__list_link ${pathname === path ? 'header__list_active' : ""}`}
+                    >
                       {title}
                     </Link>
                   </li>
@@ -65,9 +68,13 @@ export const Header = () => {
               </a>
             </ul>
 
-            <button className="header__btn">
+            <a
+              href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0" 
+              className="header__btn"
+              target="_blank"
+            >
               Есть проекты?
-            </button>
+            </a>
 
             <button onClick={() => setMenu(!menu)} className="header__burger">
               <img
@@ -87,13 +94,18 @@ export const Header = () => {
                           <Link 
                             to={path} 
                             className={`header__menu_link`}
+                            onClick={() => setMenu(false)}
                           >
                             {title}
                           </Link>
                         </li>
                       ))
                     }
-                    <a href="#contacts" className="header__menu_link">
+                    <a 
+                      href="#contacts" 
+                      className="header__menu_link"
+                      onClick={() => setMenu(false)}
+                    >
                       Контакты
                     </a>
                   </ul>

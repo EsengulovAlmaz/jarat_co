@@ -1,75 +1,6 @@
 .more_events {
     margin-bottom: 50px;
 
-    &__card {
-        border-radius: 22px;
-        background: #181A1E;
-        padding: 30px;
-        display: flex;
-        align-items: start;
-        justify-content: space-between;
-    }
-
-    &__content {
-        width: 60%;
-
-        &__format {
-            color: #9789E9;
-            font-size: 14px;
-            font-weight: 500;
-            line-height: 14px;
-            text-transform: uppercase;
-        }
-    
-        &__title {
-            font-size: 27px;
-            font-weight: 700;
-            line-height: 24px;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            margin: 20px 0;
-        }
-    
-        &__text {
-            color: rgba(255, 255, 255, 0.80);
-            font-size: 18px;
-            font-weight: 400;
-            line-height: 24px;
-        }
-    
-        &__date {
-            font-size: 16px;
-            font-weight: 600;
-            line-height: 24px;
-            margin: 20px 0 40px 0;
-        }
-    
-        &__btn {    
-            font-size: 15px;
-            font-weight: 600;
-            line-height: 15px;
-            border-radius: 20px;
-            color: #FFF;
-            background: #5B43E9;
-            padding: 12px 32px;
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                color: #000000;
-                background: #ffffff;
-            }
-        }
-    }
-
-    &__block {
-        width: 35%;
-
-        &_img {
-            width: 100%;
-            height: 300px;
-        }
-    }
-
     &__title {
         font-size: 27px;
         font-weight: 700;
@@ -90,18 +21,6 @@
     .more_events {
         margin-bottom: 30px;
 
-        &__card {
-            padding: 15px 15px 25px 15px;
-        }
-
-        &__content {
-            width: 100%;
-        }
-
-        &__block {
-            display: none;
-        }
-
         &__speakers {
             flex-wrap: wrap;
             justify-content: space-between;
@@ -112,33 +31,6 @@
 
 @media screen and (max-width: 425px) {
     .more_events {
-        &__content {
-            &__format {
-                font-size: 12px;
-            }
-
-            &__title {
-                font-size: 14px;
-                line-height: normal;
-            }
-
-            &__text {
-                font-size: 12px;
-                line-height: normal;
-            }
-
-            &__date {
-                font-size: 12px;
-                margin-bottom: 30px;
-            }
-
-            &__btn {
-                font-size: 14px;
-                display: block;
-                text-align: center;
-            }
-        }
-
         &__title {
             font-size: 14px;
             line-height: normal;

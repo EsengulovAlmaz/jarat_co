@@ -1,6 +1,7 @@
 import React from 'react'
 import PagesLayout from '../../elements/layouts/PagesLayouts'
 import { CoursesCard } from './coursesCard'
+import { IoIosArrowDown } from "react-icons/io";
 
 import './index.scss'
 
@@ -73,10 +74,7 @@ export const OurCourses = () => {
             <p>
               Еще
             </p>
-            <img
-              src="/src/assets/images/arrow.svg" 
-              alt="arrow" 
-            />
+            <IoIosArrowDown />
           </div>
         </div>
       </PagesLayout>

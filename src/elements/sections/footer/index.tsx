@@ -14,22 +14,22 @@ const IFooterList: IFooter[] = [
   {
     id: 1,
     title: "Курсы",
-    path: ""
+    path: "/courses"
   },
   {
     id: 2,
     title: "Портфолио",
-    path: ""
+    path: "/portfolio"
   },
   {
     id: 3,
     title: "Ивенты",
-    path: ""
+    path: "/events"
   },
   {
     id: 4,
     title: "Контакты",
-    path: ""
+    path: "#contacts"
   },
 ]
 

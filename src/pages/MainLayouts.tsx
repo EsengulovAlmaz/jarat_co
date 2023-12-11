@@ -7,6 +7,8 @@ import Courses from './courses'
 import Partners from './partners'
 import Events from './events'
 import MoreEvents from './moreEvent'
+import MorePortfolio from './morePortfolio'
+import MoreCourse from './moreCourse'
 
 const MainLayouts = () => {
   return (
@@ -18,6 +20,8 @@ const MainLayouts = () => {
           <Route path='/courses' element={<Courses />} />
           <Route path='/events' element={<Events />} />
           <Route path='/events/:id' element={<MoreEvents />} />
+          <Route path='/courses/:id' element={<MoreCourse />} />
+          <Route path='/portfolio/:id' element={<MorePortfolio />} />
         </Routes>
     </StackedLayout>
   )

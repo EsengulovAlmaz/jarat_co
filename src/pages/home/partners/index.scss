@@ -12,25 +12,8 @@
         font-size: 17px;
         font-weight: 400;
         line-height: 25.5px;
-        padding: 10px 0;
+        margin: 10px 0 30px 0;
         width: 70%;
-    }
-
-    &__btn {
-        margin: 20px 0 60px 0;
-
-        a {
-            color: #5B43E9;
-            font-size: 17px;
-            font-weight: 500;
-            line-height: 25.5px;
-            cursor: pointer;
-            transition: all 0.3s ease-in-out;
-
-            &:hover {
-                color: #C9C9C9;
-            }
-        }
     }
 
     &__wrapper {
@@ -88,12 +71,6 @@
         &__text {
             font-size: 13px;
             line-height: normal;
-        }
-        &__btn {
-            margin: 10px 0 30px 0;
-            a {
-                font-size: 14px;
-            }
         }
     }
 }

@@ -19,9 +19,13 @@ export const Cooperation = () => {
               Давайте учиться вместе, расти вместе и зарабатывать вместе. Если вы хотите нанять наших студентов и наставников, пожалуйста, свяжитесь с нами
             </p>
 
-            <button className="cooperation__btn">
+            <a 
+              className="cooperation__btn"
+              href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0"
+              target="_blank"
+            >
               Написать нам
-            </button>
+            </a>
           </div>
 
           <div className="cooperation__block">

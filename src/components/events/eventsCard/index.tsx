@@ -3,6 +3,7 @@ import './index.scss'
 import { Link } from 'react-router-dom'
 
 interface EventsCardProps {
+    id: number
     format: string
     title: string
     duration: string
@@ -13,6 +14,7 @@ interface EventsCardProps {
 }
 
 export const EventsCard: React.FC<EventsCardProps> = ({
+    id,
     duration,
     format,
     image,
@@ -48,7 +50,7 @@ export const EventsCard: React.FC<EventsCardProps> = ({
                     </div>
                 </div>
 
-                <Link to="/" className="events_card__more">
+                <Link to={`/events/${id}`} className="events_card__more">
                     Подробнее
                 </Link>
             </div>
