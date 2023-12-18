@@ -46,7 +46,11 @@ export const Header = () => {
     <PagesLayout>
         <header className="header">
           <div className="header__wrapper">
-            <Link to="/" className="header__logo">
+            <Link 
+              to="/" 
+              className="header__logo" 
+              onClick={() => setMenu(false)}
+            >
               Jarat<span className="header__logo_co">.co</span>
             </Link>
 
@@ -93,7 +97,7 @@ export const Header = () => {
                         <li key={id} className="header__menu_item">
                           <Link 
                             to={path} 
-                            className={`header__menu_link`}
+                            className={`header__menu_link ${pathname === path ? 'header__menu_active' : ""}`}
                             onClick={() => setMenu(false)}
                           >
                             {title}

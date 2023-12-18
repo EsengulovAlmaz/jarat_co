@@ -4,9 +4,12 @@ import { PartnersList } from '../../../consts'
 import PagesLayout from '../../../elements/layouts/PagesLayouts'
 
 import './index.scss'
+import { useNavigate } from 'react-router-dom'
+import { PartnersCard } from '../../../components/partnersCard'
 
 
 export const Partners = () => {
+    const navigate = useNavigate()
 
     return (
         <PagesLayout>
@@ -21,13 +24,7 @@ export const Partners = () => {
                 <div className="partners__wrapper">
                     {
                         PartnersList.map(item =>
-                            <div key={item.id} className="partners__block">
-                                <img 
-                                    src={item.img} 
-                                    alt="project" 
-                                    className="partners__image" 
-                                />
-                            </div>
+                            <PartnersCard key={item.id} />
                         )
                     }
                 </div>

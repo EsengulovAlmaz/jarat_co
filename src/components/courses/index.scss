@@ -21,14 +21,19 @@
         gap: 40px;
     }
 
-    &__btn {
+    &__block {
         text-align: center;
         margin-top: 20px;
-        transition: all 0.3s ease-in-out;
-        cursor: pointer;
 
-        &:hover {
-            color: #5B43E9;
+        &_btn {
+            color: #FFFFFF;
+            background: none;
+            transition: all 0.3s ease-in-out;
+            cursor: pointer;
+
+            &:hover {
+                color: #5B43E9;
+            }
         }
     }
 }
@@ -59,10 +64,7 @@
         &__text {
             font-size: 14px;
             line-height: normal;
-        }
-        &__btn {
-            font-size: 14px;
-        }
+        }   
         &__wrapper {
             gap: 25px;
         }

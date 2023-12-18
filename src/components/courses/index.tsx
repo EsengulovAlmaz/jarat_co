@@ -70,11 +70,13 @@ export const OurCourses = () => {
             }
           </div>
 
-          <div className="courses__btn">
-            <p>
-              Еще
-            </p>
-            <IoIosArrowDown />
+          <div className="courses__block">
+            <button className="courses__block_btn">
+              <p>
+                Еще
+              </p>
+              <IoIosArrowDown />
+            </button>
           </div>
         </div>
       </PagesLayout>

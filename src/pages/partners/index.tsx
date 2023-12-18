@@ -20,8 +20,9 @@ const Partners = () => {
             </div>
 
             <div className="partners_page__wrapper">
-                <PartnersCard title='It' />
-                <PartnersCard title='Школы' />
+                <PartnersCard />
+                <PartnersCard />
+                <PartnersCard />
             </div>
         </div>
     </PagesLayout>

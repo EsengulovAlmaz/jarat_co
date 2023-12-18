@@ -1,58 +1,38 @@
 import React from 'react'
 
-import { Navigation, Pagination, A11y, Autoplay } from 'swiper/modules'
-import { Swiper, SwiperSlide } from 'swiper/react'
-import { PartnersList } from '../../consts'
+import { MdArrowOutward } from "react-icons/md"
 
 import './index.scss'
-import 'swiper/css'
-import 'swiper/css/bundle'
 
 interface IPartnersProps {
-    title: string
 }
 
-export const PartnersCard: React.FC<IPartnersProps> = ({
-    title
-}) => {
-    const breakpoints = {
-        10: {
-          slidesPerView: 2,
-        },
-        769: {
-          slidesPerView: 3,
-        },
-      }
+export const PartnersCard: React.FC<IPartnersProps> = () => {
+    return (
+        <div className="partners_card">
+            <div className="partners_card__block">
+                <div className="partners_card__logo">
+                    <img
+                        className="partners_card__logo_img"
+                        src="/src/assets/images/cryxxenLogo.svg" 
+                        alt="logo" 
+                    />
+                </div>
+            </div>
 
-  return (
-    <div className="partners_card">
-        <div className="partners_card__title">
-            {title}
+            <div className="partners_card__title">
+                Cryxxen
+            </div>
+
+            <div className="partners_card__text">
+                Мы разрабатываем программное обеспечение и помогаем бизнесу
+            </div>
+
+            <div className="partners_card__more">
+                <a href={`/partners/2`}>
+                    <MdArrowOutward className="partners_card__link" />
+                </a>
+            </div>
         </div>
-
-        <Swiper
-            modules={[Navigation, Pagination, A11y, Autoplay]}
-            spaceBetween={20}
-            breakpoints={breakpoints}
-            slidesPerGroup={1}
-            loop={true}
-            autoplay={{ delay: 3000 }}
-            speed={1500}
-        >
-            {
-               PartnersList.map(item => 
-                <SwiperSlide key={item.id}>
-                    <div className="partners_card__slide">
-                        <img 
-                            src={item.img} 
-                            alt="partners" 
-                            className="partners_card__image" 
-                        />
-                    </div>
-                </SwiperSlide>
-               ) 
-            }
-        </Swiper>
-    </div>
-  )
+    )
 }

@@ -2,7 +2,7 @@ import React from 'react'
 import PagesLayout from '../../elements/layouts/PagesLayouts'
 import { InfoCard } from '../../components/infoCard'
 
-const MorePortfolio = () => {
+const MorePartners = () => {
   return (
     <PagesLayout>
         <InfoCard />
@@ -10,4 +10,4 @@ const MorePortfolio = () => {
   )
 }
 
-export default MorePortfolio
+export default MorePartners

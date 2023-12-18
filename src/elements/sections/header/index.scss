@@ -5,7 +5,7 @@
 
     &__wrapper  {
         // position: fixed;
-        // padding: 50px 0 30px 0  ;
+        // padding: 50px 0 30px 0;
         // background: #00050F;
         // width: 90%;
         // z-index: 11;
@@ -112,6 +112,10 @@
             &:hover {            
                 color: #5A43E8;
             }
+        }
+
+        &_active {
+            color: #5A43E8;
         }
     }
 }
