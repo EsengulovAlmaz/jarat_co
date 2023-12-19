@@ -3,6 +3,7 @@ import PagesLayout from '../../layouts/PagesLayouts'
 
 import './index.scss'
 import { Link, useLocation } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 interface IHeaderList {
   id: number
@@ -39,8 +40,13 @@ const headerList: IHeaderList[] = [
 ]
 
 export const Header = () => {
-  const { pathname } = useLocation()
   const [menu, setMenu] = React.useState<boolean>(false)
+  const { pathname } = useLocation()
+  const {t, i18n} = useTranslation()
+
+  const changeLanguage = (language: string) => {
+    i18n.changeLanguage(language)
+  }
 
   return (
     <PagesLayout>
@@ -79,6 +85,12 @@ export const Header = () => {
             >
               Есть проекты?
             </a>
+
+              <button onClick={() => changeLanguage("ru")} value="ru">ru</button>
+              <button onClick={() => changeLanguage("en")} value="en">en</button>
+
+
+            <div>{t("text")}</div>
 
             <button onClick={() => setMenu(!menu)} className="header__burger">
               <img
