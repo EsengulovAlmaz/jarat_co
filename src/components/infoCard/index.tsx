@@ -1,28 +1,57 @@
-import React from 'react'
+import React from 'react';
 
-import './index.scss'
+import { useParams } from 'react-router-dom';
+import { axiosRequest } from '../../api/api';
+import { Loader } from '../../elements/sections/loader';
+import './index.scss';
 
-export const InfoCard = () => {
+interface InfoProps {
+  url: string;
+}
+
+interface InfoMore {
+  id: number;
+  title: string;
+  description: string;
+  logo?: string;
+  image?: string;
+  url?: string;
+}
+
+export const InfoCard: React.FC<InfoProps> = ({ url }) => {
+  const [infoMore, setInfoMore] = React.useState<InfoMore | null>();
+  const { id } = useParams();
+
+  const getInfoMore = React.useCallback(async () => {
+    const { data } = await axiosRequest.get(`${url}/${id}`);
+
+    if (!data) {
+      return [];
+    }
+
+    setInfoMore(data);
+  }, [id, url]);
+
+  React.useEffect(() => {
+    getInfoMore();
+  }, [getInfoMore]);
+
+  if (!infoMore) return <Loader />;
+
   return (
     <div className="info_card">
-        <div className="info_card__content">
-            <div className="info_card__title">
-                Cryxxen
-            </div>
-            <div className="info_card__text">
-                Мы разрабатываем программное обеспечение и помогаем бизнесу сократить расходы, эффективно распределять командные ресурсы, выстраивать прозрачные коммуникации и совершенствовать рабочие процессы.
-            </div>
-            <a href="/" className="info_card__btn">
-                Перейти на сайт
-            </a>
-        </div>
-        <div className="info_card__block">
-            <img 
-                src="/src/assets/images/portfolio1.png" 
-                alt=""
-                className="info_card__block_img"    
-            />
-        </div>
+      <div className="info_card__content">
+        <div className="info_card__title">{infoMore.title}</div>
+        <div className="info_card__text">{infoMore.description}</div>
+        {infoMore.url && (
+          <a href={infoMore.url} className="info_card__btn">
+            Перейти на сайт
+          </a>
+        )}
+      </div>
+      <div className="info_card__block">
+        <img src={infoMore.logo ? infoMore.logo : infoMore.image} alt="" className="info_card__block_img" />
+      </div>
     </div>
-  )
-}
+  );
+};

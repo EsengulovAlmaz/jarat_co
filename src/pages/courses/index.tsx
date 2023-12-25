@@ -1,12 +1,12 @@
-import React from 'react'
-import { OurCourses } from '../../components/courses'
+import React from 'react';
+import { OurCourses } from '../../components/courses';
 
 const Courses = () => {
   return (
     <>
-        <OurCourses />
+      <OurCourses />
     </>
-  )
-}
+  );
+};
 
-export default Courses
+export default Courses;

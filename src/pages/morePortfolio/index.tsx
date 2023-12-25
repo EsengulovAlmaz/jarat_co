@@ -1,13 +1,13 @@
-import React from 'react'
-import PagesLayout from '../../elements/layouts/PagesLayouts'
-import { InfoCard } from '../../components/infoCard'
+import React from 'react';
+import PagesLayout from '../../elements/layouts/PagesLayouts';
+import { InfoCard } from '../../components/infoCard';
 
 const MorePortfolio = () => {
   return (
     <PagesLayout>
-        <InfoCard />
+      <InfoCard url={'/portfolios'} />
     </PagesLayout>
-  )
-}
+  );
+};
 
-export default MorePortfolio
+export default MorePortfolio;

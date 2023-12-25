@@ -1,9 +1,9 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
-import { BrowserRouter } from 'react-router-dom'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import App from './App.tsx';
+import { BrowserRouter } from 'react-router-dom';
 
-import './18n.ts'
+import './18n.ts';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <BrowserRouter>
@@ -11,4 +11,4 @@ ReactDOM.createRoot(document.getElementById('root')!).render(
       <App />
     </React.Suspense>
   </BrowserRouter>,
-)
+);

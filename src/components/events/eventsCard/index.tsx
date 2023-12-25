@@ -1,68 +1,46 @@
-import React from 'react'
-import './index.scss'
-import { Link } from 'react-router-dom'
+import React from 'react';
 
-interface EventsCardProps {
-    id: number
-    format: string
-    title: string
-    duration: string
-    start: string
-    day: string
-    time: string
-    image: string
-}
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { EventsCardProps } from '../../../types/events';
 
-export const EventsCard: React.FC<EventsCardProps> = ({
-    id,
-    duration,
-    format,
-    image,
-    time,
-    day,
-    start,
-    title,
-}) => {
+import './index.scss';
+
+export const EventsCard: React.FC<EventsCardProps> = ({ id, duration, image, start_date, title, type }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="events_card">
-        <div className="events_card__content">
-            <div className="events_card__format">
-                {format}
-            </div>
-            
-            <div className="events_card__title">
-                {title}
-            </div>
+      <div className="events_card__content">
+        <div className="events_card__format">{type}</div>
 
-            <ul className="events_card__info">
-                <li className="events_card__info_item">Длительность {duration}</li>
-                <li className="events_card__info_item">Старт {start}</li>
-            </ul>
+        <div className="events_card__title">{title}</div>
 
-            <div className="events_card__date">
-                <div>
-                    <div className="events_card__day">
-                        {day} сом
-                    </div>
+        <ul className="events_card__info">
+          <li className="events_card__info_item">
+            {t('duration')} {duration}
+          </li>
+          <li className="events_card__info_item">
+            {t('eventStart')} {start_date.slice(0, 11)}
+          </li>
+        </ul>
 
-                    <div className="events_card__time">
-                        {time}
-                    </div>
-                </div>
+        <div className="events_card__date">
+          <div>
+            <div className="events_card__day">{start_date.slice(0, 11)}</div>
 
-                <Link to={`/events/${id}`} className="events_card__more">
-                    Подробнее
-                </Link>
-            </div>
+            <div className="events_card__time">{start_date.slice(11)}</div>
+          </div>
+
+          <Link to={`/events/${id}`} className="events_card__more">
+            {t('more')}
+          </Link>
         </div>
+      </div>
 
-        <div className="events_card__block">
-            <img 
-                src={image} 
-                alt="image"
-                className="events_card__block_img"
-            />
-        </div>
+      <div className="events_card__block">
+        <img src={image} alt="image" className="events_card__block_img" />
+      </div>
     </div>
-  )
-}
+  );
+};

@@ -1,34 +1,52 @@
-import React from 'react'
+import React from 'react';
 
-import { PartnersList } from '../../../consts'
-import PagesLayout from '../../../elements/layouts/PagesLayouts'
+import PagesLayout from '../../../elements/layouts/PagesLayouts';
+import { useTranslation } from 'react-i18next';
+import { PartnersCard } from '../../../components/partnersCard';
+import { Loader } from '../../../elements/sections/loader';
+import { axiosRequest } from '../../../api/api';
 
-import './index.scss'
-import { useNavigate } from 'react-router-dom'
-import { PartnersCard } from '../../../components/partnersCard'
+import './index.scss';
 
+interface IPartnersList {
+  id: number;
+  title: string;
+  description: string;
+  logo: string;
+}
 
 export const Partners = () => {
-    const navigate = useNavigate()
+  const [partnersList, setPartnersList] = React.useState<IPartnersList[]>([]);
+  const { t } = useTranslation();
 
-    return (
-        <PagesLayout>
-            <div className="partners">
-                <div className="partners__title">
-                    Наши партнеры
-                </div>
-                <p className="partners__text">
-                    Нам доверяют компании по всему миру, пользуются миллионы пользователей
-                </p>
+  const getPartners = React.useCallback(async () => {
+    const { data } = await axiosRequest.get('/partners/');
 
-                <div className="partners__wrapper">
-                    {
-                        PartnersList.map(item =>
-                            <PartnersCard key={item.id} />
-                        )
-                    }
-                </div>
-            </div>
-        </PagesLayout>
-    )
-}
+    if (!data) {
+      return [];
+    }
+
+    setPartnersList(data);
+  }, []);
+
+  React.useEffect(() => {
+    getPartners();
+  }, [getPartners]);
+
+  if (partnersList.length === 0) return <Loader />;
+
+  return (
+    <PagesLayout>
+      <div className="partners">
+        <div className="partners__title">{t('ourPartners')}</div>
+        <p className="partners__text">{t('ourPartnersText')}</p>
+
+        <div className="partners__wrapper">
+          {partnersList.map((item) => (
+            <PartnersCard key={item.id} {...item} />
+          ))}
+        </div>
+      </div>
+    </PagesLayout>
+  );
+};

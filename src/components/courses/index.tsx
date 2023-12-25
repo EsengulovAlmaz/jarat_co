@@ -1,84 +1,50 @@
-import React from 'react'
-import PagesLayout from '../../elements/layouts/PagesLayouts'
-import { CoursesCard } from './coursesCard'
-import { IoIosArrowDown } from "react-icons/io";
+import React from 'react';
 
-import './index.scss'
+import PagesLayout from '../../elements/layouts/PagesLayouts';
+import { CoursesCard } from './coursesCard';
+import { IoIosArrowDown } from 'react-icons/io';
+import { CoursesCardProps } from '../../types/courses';
+import { useTranslation } from 'react-i18next';
+import { axiosRequest } from '../../api/api';
+import { Loader } from '../../elements/sections/loader';
 
-interface ICoursesList {
-    id: number
-    format: string
-    title: string
-    duration: string
-    start: string
-    price: number
-    old_price: number
-    image: string
-}
-  
-const coursesList: ICoursesList[] = [
-    {
-      id: 1,
-      format: "Offline",
-      title: "Zero-to-One for Junior Engineers",
-      duration: "1 месяц",
-      start: "2023-06-05",
-      price: 20000,
-      old_price: 25000,
-      image: "/src/assets/images/courses1.svg",
-    },
-    {
-      id: 2,
-      format: "Offline",
-      title: "SMM",
-      duration: "1 месяц",
-      start: "2023-06-05",
-      price: 20000,
-      old_price: 25000,
-      image: "/src/assets/images/courses2.svg",
-    },
-    {
-      id: 3,
-      format: "Offline",
-      title: "English for Business",
-      duration: "1 месяц",
-      start: "2023-06-05",
-      price: 20000,
-      old_price: 25000,
-      image: "/src/assets/images/courses3.svg",
-    },
-]
+import './index.scss';
 
 export const OurCourses = () => {
+  const [coursesList, setCoursesList] = React.useState<CoursesCardProps[]>([]);
+  const { t } = useTranslation();
+
+  const getCourses = React.useCallback(async () => {
+    const { data } = await axiosRequest.get('/courses/courses/');
+
+    if (data.length === 0) {
+      return [];
+    }
+
+    setCoursesList(data);
+  }, []);
+
+  React.useEffect(() => {
+    getCourses();
+  }, [getCourses]);
+
+  if (coursesList.length === 0) return <Loader />;
+
   return (
     <PagesLayout>
-        <div className="courses">
-          <div className="courses__title">
-            Курсы
-          </div>
-          <p className="courses__text">
-            Раскройте свой творческий потенциал и раскройте свой потенциал с помощью
-            наших разнообразных курсов, предназначенных для развития ваших
-            художественных навыков и профессионального опыта.
-          </p>
+      <div className="courses">
+        <div className="courses__title">{t('courses')}</div>
+        <p className="courses__text">{t('coursesText')}</p>
 
-          <div className="courses__wrapper">
-            {
-              coursesList.map(item => 
-                <CoursesCard key={item.id} {...item} />
-              )
-            }
-          </div>
+        <div className="courses__wrapper">{coursesList?.map((item) => <CoursesCard key={item.id} {...item} />)}</div>
 
-          <div className="courses__block">
-            <button className="courses__block_btn">
-              <p>
-                Еще
-              </p>
-              <IoIosArrowDown />
-            </button>
-          </div>
+        <div className="courses__block">
+          <button className="courses__block_btn">
+            <p>{t('yet')}</p>
+            <IoIosArrowDown />
+          </button>
         </div>
-      </PagesLayout>
-  )
-}
+      </div>
+    </PagesLayout>
+  );
+};

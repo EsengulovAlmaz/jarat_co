@@ -1,129 +1,101 @@
-import React from 'react'
-import PagesLayout from '../../elements/layouts/PagesLayouts'
-import { MoreCard } from '../../components/moreCard'
+import React from 'react';
+import PagesLayout from '../../elements/layouts/PagesLayouts';
+import { MoreCard } from '../../components/moreCard';
 
-import './index.scss'
-import { LearnCard } from '../../components/learnCard'
-import { ProgramCard } from '../../components/programCard'
-import { SpeakersCard } from '../../components/speakersCard'
-import { QuestionsCard } from '../../components/questionsCard'
+import './index.scss';
+import { LearnCard } from '../../components/learnCard';
+import { ProgramCard } from '../../components/programCard';
+import { SpeakersCard } from '../../components/speakersCard';
+import { QuestionsCard } from '../../components/questionsCard';
+import { CoursesCardProps } from '../../types/courses';
+import { axiosRequest } from '../../api/api';
+import { Loader } from '../../elements/sections/loader';
+import { useParams } from 'react-router-dom';
 
 interface IQuestions {
-    id: number
-    title: string
-    description: string
+  id: number;
+  question: string;
+  answer: string;
 }
-
-const questionsList: IQuestions[] = [
-    {
-        id: 1,
-        title: "Подойдет ли для меня эта профепрофессия?",
-        description: `В программе предусмотрены каникулы, во время которых можно отдохнуть или повторить сложные темы. 
-        
-        Если вам понадобится сделать паузу во время учёбы или уделить больше времени закреплению материала, можно будет взять академический отпуск — для этого напишите своему куратору. 
-        
-        Вы можете продолжить свое обучение на следующем потоке.`
-    },
-    {
-        id: 2,
-        title: "Можно ли обучиться профессии за несколько месяцев ?",
-        description: `В программе предусмотрены каникулы, во время которых можно отдохнуть или повторить сложные темы. 
-        
-        Если вам понадобится сделать паузу во время учёбы или уделить больше времени закреплению материала, можно будет взять академический отпуск — для этого напишите своему куратору. 
-        
-        Вы можете продолжить свое обучение на следующем потоке.`
-    },
-    {
-        id: 3,
-        title: "Каким требованиям мне нужно соответствовать ?",
-        description: `В программе предусмотрены каникулы, во время которых можно отдохнуть или повторить сложные темы. 
-        
-        Если вам понадобится сделать паузу во время учёбы или уделить больше времени закреплению материала, можно будет взять академический отпуск — для этого напишите своему куратору. 
-        
-        Вы можете продолжить свое обучение на следующем потоке.`
-    },
-    {
-        id: 4,
-        title: "Кто будет меня обучать ?",
-        description: `В программе предусмотрены каникулы, во время которых можно отдохнуть или повторить сложные темы. 
-        
-        Если вам понадобится сделать паузу во время учёбы или уделить больше времени закреплению материала, можно будет взять академический отпуск — для этого напишите своему куратору. 
-        
-        Вы можете продолжить свое обучение на следующем потоке.`
-    },
-    {
-        id: 5,
-        title: "Как и когда я буду учиться ? ",
-        description: `В программе предусмотрены каникулы, во время которых можно отдохнуть или повторить сложные темы. 
-        
-        Если вам понадобится сделать паузу во время учёбы или уделить больше времени закреплению материала, можно будет взять академический отпуск — для этого напишите своему куратору. 
-        
-        Вы можете продолжить свое обучение на следующем потоке.`
-    },
-]
 
 const MoreCourse = () => {
-    const [selectedId, setSelectedId] = React.useState<number>(0)
+  const [courseMore, setCourseMore] = React.useState<CoursesCardProps | null>();
+  const [answerList, setAnswerList] = React.useState<IQuestions[] | []>([]);
+  const [selectedId, setSelectedId] = React.useState<number>(0);
+  const { id } = useParams();
 
-    return (
-        <PagesLayout>
-            <div className="more_course">
-                <MoreCard />
+  const getCourseMore = React.useCallback(async () => {
+    const { data } = await axiosRequest.get(`/courses/courses/${id}`);
 
-                <div className="more_course__learn">
-                    <div className="more_course__learn_title">
-                        Чему вы научитесь?
-                    </div>
+    if (!data) {
+      return [];
+    }
 
-                    <LearnCard />
-                    <LearnCard />
-                    <LearnCard />
-                </div>
+    setCourseMore(data);
+  }, [id]);
 
-                <div className="more_course__program">
-                    <div className="more_course__title">
-                        Программа
-                    </div> 
+  const getAnswer = React.useCallback(async () => {
+    const { data } = await axiosRequest.get('/courses/informations/');
 
-                    <div className="more_course__program_block">
-                        <ProgramCard />
-                        <ProgramCard />
-                        <ProgramCard />
-                    </div>
-                </div>
+    if (data.length === 0) {
+      return [];
+    }
 
-                <div className="more_course__speakers">
-                    <div className="more_course__title">
-                        спикеры
-                    </div>
+    setAnswerList(data);
+  }, []);
 
-                    <div className="more_course__speakers_block">
-                        <SpeakersCard />
-                        <SpeakersCard />
-                    </div>
-                </div>
+  React.useEffect(() => {
+    getCourseMore();
+    getAnswer();
+  }, [getCourseMore, getAnswer]);
 
-                <div className="more_course__questions">
-                    <div className="more_course__title">
-                        вопросы и ответы
-                    </div>
+  if (!courseMore) return <Loader />;
 
-                    <div className="more_course__questions_block">
-                        {
-                            questionsList.map(item => 
-                                <QuestionsCard
-                                    key={item.id}
-                                    {...item}
-                                    setSelectedId={setSelectedId}
-                                    selectedId={selectedId}
-                                />
-                            )
-                        }
-                    </div>
-                </div>
-            </div>
-        </PagesLayout>
-    )
-}
+  return (
+    <PagesLayout>
+      <div className="more_course">
+        <MoreCard {...courseMore} />
 
-export default MoreCourse
+        <div className="more_course__learn">
+          <div className="more_course__learn_title">Чему вы научитесь?</div>
+
+          {courseMore.learns.map((item) => (
+            <LearnCard key={item.id} {...item} />
+          ))}
+        </div>
+
+        <div className="more_course__program">
+          <div className="more_course__title">Программа</div>
+
+          <div className="more_course__program_block">
+            {courseMore.programs.map((item) => (
+              <ProgramCard key={item.id} {...item} />
+            ))}
+          </div>
+        </div>
+
+        <div className="more_course__speakers">
+          <div className="more_course__title">спикеры</div>
+
+          <div className="more_course__speakers_block">
+            {courseMore.speakers.map((item) => (
+              <SpeakersCard key={item.id} {...item} />
+            ))}
+          </div>
+        </div>
+
+        <div className="more_course__questions">
+          <div className="more_course__title">вопросы и ответы</div>
+
+          <div className="more_course__questions_block">
+            {answerList.map((item) => (
+              <QuestionsCard key={item.id} {...item} setSelectedId={setSelectedId} selectedId={selectedId} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </PagesLayout>
+  );
+};
+
+export default MoreCourse;

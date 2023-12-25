@@ -1,12 +1,8 @@
-import MainLayouts from "./pages/MainLayouts"
-import './main.scss'
-
+import MainLayouts from './pages/MainLayouts';
+import './main.scss';
 
 function App() {
-
-  return (
-    <MainLayouts />
-  )
+  return <MainLayouts />;
 }
 
-export default App
+export default App;

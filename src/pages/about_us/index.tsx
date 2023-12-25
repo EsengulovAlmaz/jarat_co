@@ -1,59 +1,70 @@
-import React from 'react'
+import React from 'react';
 
-import PagesLayout from '../../elements/layouts/PagesLayouts'
+import PagesLayout from '../../elements/layouts/PagesLayouts';
+import { useTranslation } from 'react-i18next';
 
-import './index.scss'
+import './index.scss';
+import { axiosRequest } from '../../api/api';
+import { Loader } from '../../elements/sections/loader';
 
-const AboutUs = () => {
-  return (
-    <PagesLayout>
-        <div className="mission">
-          <div className="mission__content">
-            <p className="mission__content_title">
-                Jarat<span className="mission__content_co">.co</span>
-            </p>
-
-            <div className="mission__content_text">
-              Наша миссия в Школ творческих профессий
-              состоит в том, чтобы дать людям возможностьраскрыть свой творческий
-              потенциал и развивать увлеченную карьеру в постоянно
-            </div>
-          </div>
-          <div className="mission__block">
-            <img 
-              src="/src/assets/images/mission.svg" 
-              alt="image"
-              className="mission__block_img"
-             />
-          </div>
-        </div>
-
-        <div className="strive">
-          <div className="aboutUs__title">
-            Мы стремимся предоставить
-          </div>
-          <p className="aboutUs__text">
-            Преобразующий образовательный опыт, который способствует критическому мышлению, техническим знаниям и художественному самовыражению. С помощью междисциплинарной учебной программы мы стремимся воспитать следующее поколение творческих профессионалов, снабдив их знаниями, навыками и мышлением, необходимыми для достижения успеха в различных творческих отраслях.
-          </p>
-          <p className="aboutUs__text">
-            Благодаря партнерским отношениям с лидерами отрасли, профессиональными наставниками и уважаемыми творческими практиками мы предоставляем нашим студентам реальный опыт, стажировки и возможности для общения, позволяя им преодолеть разрыв между академическими кругами и профессиональным миром. Мы подчеркиваем важность предпринимательства, адаптивности и устойчивости, давая нашим выпускникам возможность двигаться по динамичному пути карьеры и вносить значительный вклад в выбранные ими области.
-          </p>
-          <p className="aboutUs__text">
-            Кроме того, мы стремимся продвигать исследования и инновации в творческой сфере, раздвигая границы художественного самовыражения, дизайнерского мышления и технологических достижений. Содействуя междисциплинарному сотрудничеству и участвуя в передовых исследованиях, мы стремимся продвигать эволюцию творческих профессий и формировать будущее творческого ландшафта.
-          </p>
-        </div>
-
-        <div className="end">
-          <div className="aboutUs__title">
-            В конечном счете
-          </div>
-          <div className="aboutUs__text">
-            Наша миссия состоит в том, чтобы вдохновлять, расширять возможности и вооружать людей творческими способностями и предпринимательским духом, чтобы оставить неизгладимый след в обществе, оказывая длительное влияние благодаря своему художественному видению, вкладу в культуру и преобразующим творениям.
-            Вместе мы отправляемся в путь воображения, инноваций и художественного совершенства, взращивая лидеров, законодателей моды и провидцев завтрашнего дня в Школе творческих профессий.
-          </div>
-        </div>
-    </PagesLayout>
-  )
+interface IRequest {
+  id: number;
+  title: string;
+  descriptions: IDescriptions[];
 }
 
-export default AboutUs
+interface IDescriptions {
+  id: number;
+  description: string;
+}
+
+const AboutUs = () => {
+  const [aboutInfo, setAboutInfo] = React.useState<IRequest[]>([]);
+  const { t } = useTranslation();
+
+  const getAbout = React.useCallback(async () => {
+    const { data } = await axiosRequest.get('/abouts/');
+
+    if (data.length === 0) {
+      return [];
+    }
+
+    setAboutInfo(data);
+  }, []);
+
+  React.useEffect(() => {
+    getAbout();
+  }, [getAbout]);
+
+  if (aboutInfo.length === 0) return <Loader />;
+
+  return (
+    <PagesLayout>
+      <div className="mission">
+        <div className="mission__content">
+          <p className="mission__content_title">
+            Jarat<span className="mission__content_co">.co</span>
+          </p>
+
+          <div className="mission__content_text">{t('mission')}</div>
+        </div>
+        <div className="mission__block">
+          <img src="/src/assets/images/mission.svg" alt="image" className="mission__block_img" />
+        </div>
+      </div>
+
+      {aboutInfo?.map(({ id, title, descriptions }) => (
+        <div className="strive" key={id}>
+          <div className="aboutUs__title">{title}</div>
+          {descriptions?.map(({ id, description }) => (
+            <p className="aboutUs__text" key={id}>
+              {description}
+            </p>
+          ))}
+        </div>
+      ))}
+    </PagesLayout>
+  );
+};
+
+export default AboutUs;

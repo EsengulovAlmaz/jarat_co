@@ -1,45 +1,45 @@
 .more_events {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 
-    &__title {
-        font-size: 27px;
-        font-weight: 700;
-        line-height: 24px;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
-        margin: 60px 0;
-    }
+  &__title {
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 60px 0;
+  }
 
-    &__speakers {
-        display: flex;
-        align-items: center;
-        gap: 40px;
-    }
+  &__speakers {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+  }
 }
 
 @media screen and (max-width: 768px) {
-    .more_events {
-        margin-bottom: 30px;
+  .more_events {
+    margin-bottom: 30px;
 
-        &__speakers {
-            flex-wrap: wrap;
-            justify-content: space-between;
-            gap: 10px;
-        }
+    &__speakers {
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
     }
+  }
 }
 
 @media screen and (max-width: 425px) {
-    .more_events {
-        &__title {
-            font-size: 14px;
-            line-height: normal;
-            margin: 50px 0 30px 0;
-        }
-
-        &__speakers {
-            flex-direction: column;
-            gap: 30px;
-        }
+  .more_events {
+    &__title {
+      font-size: 14px;
+      line-height: normal;
+      margin: 50px 0 30px 0;
     }
+
+    &__speakers {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
 }

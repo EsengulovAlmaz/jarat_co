@@ -1,72 +1,60 @@
-import React from 'react'
-import './index.scss'
-import { Link } from 'react-router-dom'
+import React from 'react';
 
-interface CoursesCardProps {
-    id: number
-    format: string
-    title: string
-    duration: string
-    start: string
-    price: number
-    old_price: number
-    image: string
-}
+import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
+import { CoursesCardProps } from '../../../types/courses';
+
+import './index.scss';
 
 export const CoursesCard: React.FC<CoursesCardProps> = ({
-    id,
-    duration,
-    format,
-    image,
-    old_price,
-    price,
-    start,
-    title,
+  id,
+  duration,
+  image,
+  start_date,
+  title,
+  type,
+  discount,
+  new_price,
+  old_price,
 }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="courses_card">
-        <div className="courses_card__content">
-            <div className="courses_card__format">
-                {format}
+      <div className="courses_card__content">
+        <div className="courses_card__format">{type}</div>
+
+        <div className="courses_card__title">{title}</div>
+
+        <ul className="courses_card__info">
+          <li className="courses_card__info_item">
+            {t('duration')} {duration}
+          </li>
+          <li className="courses_card__info_item">
+            {t('start')} {start_date}
+          </li>
+        </ul>
+
+        <div className="courses_card__prices">
+          <div>
+            <button className="courses_card__promotion">{discount}</button>
+
+            <div className="courses_card__newPrice">
+              {new_price} {t('som')}
             </div>
-            
-            <div className="courses_card__title">
-                {title}
-            </div>
 
-            <ul className="courses_card__info">
-                <li className="courses_card__info_item">Длительность курса {duration}</li>
-                <li className="courses_card__info_item">Старт курса {start}</li>
-            </ul>
+            <div className="courses_card__oldPrice">{old_price}</div>
+          </div>
 
-            <div className="courses_card__prices">
-                <div>
-                    <button className="courses_card__promotion">
-                        - 50%
-                    </button>
-
-                    <div className="courses_card__newPrice">
-                        {price} сом
-                    </div>
-
-                    <div className="courses_card__oldPrice">
-                        {old_price}
-                    </div>
-                </div>
-
-                <Link to={`/courses/${id}`} className="courses_card__more">
-                    Подробнее
-                </Link>
-            </div>
+          <Link to={`/courses/${id}`} className="courses_card__more">
+            {t('more')}
+          </Link>
         </div>
+      </div>
 
-        <div className="courses_card__block">
-            <img 
-                src={image} 
-                alt="image"
-                className="courses_card__block_img"
-            />
-        </div>
+      <div className="courses_card__block">
+        <img src={image} alt="image" className="courses_card__block_img" />
+      </div>
     </div>
-  )
-}
+  );
+};
