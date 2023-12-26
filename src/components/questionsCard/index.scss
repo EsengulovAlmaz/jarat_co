@@ -1,0 +1,46 @@
+.questions_card {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  margin-top: 20px;
+
+  &__block {
+    display: flex;
+    align-items: start;
+    gap: 15px;
+    cursor: pointer;
+  }
+
+  &__active {
+    transition: all 0.3s ease-in-out;
+    transform: rotate(45deg);
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 700;
+    margin-bottom: 20px;
+  }
+
+  &__description {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-weight: 500;
+    width: 70%;
+    margin: 0 0 40px 10px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .questions_card {
+    &__title {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    &__description {
+      font-size: 10px;
+      margin-bottom: 20px;
+      width: 100%;
+    }
+  }
+}

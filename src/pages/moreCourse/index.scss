@@ -1,0 +1,79 @@
+.more_course {
+  &__learn {
+    &_title {
+      font-size: 27px;
+      font-weight: 700;
+      line-height: 24px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 80px;
+    }
+  }
+
+  &__program {
+    &_block {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+
+  &__speakers {
+    &_block {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+  }
+
+  &__questions {
+    &_block {
+      margin-bottom: 50px;
+    }
+  }
+
+  &__title {
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 24px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin: 80px 0 40px 0;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .more_course {
+    &__learn {
+      &_title {
+        margin-top: 50px;
+      }
+    }
+
+    &__title {
+      margin: 50px 0 30px 0;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .more_course {
+    &__learn {
+      &_title {
+        font-size: 14px;
+        line-height: normal;
+      }
+    }
+
+    &__title {
+      font-size: 14px;
+      line-height: normal;
+    }
+
+    &__speakers {
+      &_block {
+        flex-direction: column;
+      }
+    }
+  }
+}

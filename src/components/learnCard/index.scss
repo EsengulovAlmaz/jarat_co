@@ -1,0 +1,42 @@
+.learn_card {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 45px 0;
+
+  &__num {
+    font-size: 65px;
+    font-weight: 500;
+  }
+
+  &__title {
+    font-size: 17px;
+    font-weight: 700;
+  }
+
+  &__text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    font-weight: 500;
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .learn_card {
+    padding: 25px 0;
+
+    &__num {
+      font-size: 45px;
+    }
+
+    &__title {
+      font-size: 13px;
+    }
+
+    &__text {
+      font-size: 12px;
+    }
+  }
+}
