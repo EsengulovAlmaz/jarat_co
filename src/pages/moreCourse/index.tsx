@@ -11,6 +11,7 @@ import { CoursesCardProps } from '../../types/courses';
 import { axiosRequest } from '../../api/api';
 import { Loader } from '../../elements/sections/loader';
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 interface IQuestions {
   id: number;
@@ -23,19 +24,23 @@ const MoreCourse = () => {
   const [answerList, setAnswerList] = React.useState<IQuestions[] | []>([]);
   const [selectedId, setSelectedId] = React.useState<number>(0);
   const { id } = useParams();
+  const { i18n } = useTranslation();
 
-  const getCourseMore = React.useCallback(async () => {
-    const { data } = await axiosRequest.get(`/courses/courses/${id}`);
+  const getCourseMore = React.useCallback(
+    async (lang: string) => {
+      const { data } = await axiosRequest(lang).get(`/courses/courses/${id}`);
 
-    if (!data) {
-      return [];
-    }
+      if (!data) {
+        return [];
+      }
 
-    setCourseMore(data);
-  }, [id]);
+      setCourseMore(data);
+    },
+    [id],
+  );
 
-  const getAnswer = React.useCallback(async () => {
-    const { data } = await axiosRequest.get('/courses/informations/');
+  const getAnswer = React.useCallback(async (lang: string) => {
+    const { data } = await axiosRequest(lang).get('/courses/informations/');
 
     if (data.length === 0) {
       return [];
@@ -45,9 +50,9 @@ const MoreCourse = () => {
   }, []);
 
   React.useEffect(() => {
-    getCourseMore();
-    getAnswer();
-  }, [getCourseMore, getAnswer]);
+    getCourseMore(i18n.language);
+    getAnswer(i18n.language);
+  }, [getCourseMore, getAnswer, i18n.language]);
 
   if (!courseMore) return <Loader />;
 

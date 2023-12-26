@@ -12,10 +12,10 @@ import './index.scss';
 
 export const OurCourses = () => {
   const [coursesList, setCoursesList] = React.useState<CoursesCardProps[]>([]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const getCourses = React.useCallback(async () => {
-    const { data } = await axiosRequest.get('/courses/courses/');
+  const getCourses = React.useCallback(async (lang: string) => {
+    const { data } = await axiosRequest(lang).get('/courses/courses/');
 
     if (data.length === 0) {
       return [];
@@ -25,8 +25,8 @@ export const OurCourses = () => {
   }, []);
 
   React.useEffect(() => {
-    getCourses();
-  }, [getCourses]);
+    getCourses(i18n.language);
+  }, [getCourses, i18n.language]);
 
   if (coursesList.length === 0) return <Loader />;
 
