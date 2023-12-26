@@ -27,8 +27,6 @@ export const OurEvents = () => {
     getEvents();
   }, [getEvents]);
 
-  console.log(eventsList);
-
   if (eventsList.length === 0) return <Loader />;
 
   return (
