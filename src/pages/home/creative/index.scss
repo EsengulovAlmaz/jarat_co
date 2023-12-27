@@ -7,11 +7,6 @@
   }
   &__btn {
     width: 30%;
-    border-radius: 15px;
-    background: #181a1e;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
     line-height: 24px;
     text-transform: uppercase;
     display: flex;
@@ -19,12 +14,11 @@
     align-items: center;
     justify-content: center;
     gap: 15px;
-    padding: 20px 0;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
 
     &:hover {
-      background: #5b43e9;
+      background: #5b43e9 !important;
     }
 
     &_img {
@@ -33,7 +27,7 @@
     }
   }
   &__active {
-    background: #5b43e9;
+    background: #5b43e9 !important;
   }
   &__quantity {
     display: flex;

@@ -85,7 +85,7 @@ export const Header = () => {
             </a>
           </ul>
 
-          <div>
+          <div className="header__row">
             <a
               href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0"
               className="header__btn"
@@ -93,6 +93,14 @@ export const Header = () => {
             >
               {t('haveProjects')}
             </a>
+
+            <button onClick={() => setMenu(!menu)} className="header__burger">
+              <img
+                className="header__burger_img"
+                src={`/src/assets/images/${menu ? 'close' : 'burger'}.svg`}
+                alt="menu"
+              />
+            </button>
 
             <select className="header__lang" onChange={(e) => changeLanguage(e.target.value)}>
               {languagesList.map(({ id, lang }) => (
@@ -102,14 +110,6 @@ export const Header = () => {
               ))}
             </select>
           </div>
-
-          <button onClick={() => setMenu(!menu)} className="header__burger">
-            <img
-              className="header__burger_img"
-              src={`/src/assets/images/${menu ? 'close' : 'burger'}.svg`}
-              alt="menu"
-            />
-          </button>
         </div>
         {menu && (
           <div className="header__menu">

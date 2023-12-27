@@ -31,8 +31,22 @@
     width: 40%;
 
     &_img {
+      position: relative;
       width: 100%;
+      animation: banner-img 2s infinite alternate linear 0s;
     }
+  }
+}
+
+@keyframes banner-img {
+  from {
+    top: -10px;
+  }
+  50% {
+    top: 10px;
+  }
+  to {
+    top: -10px;
   }
 }
 

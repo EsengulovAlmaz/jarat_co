@@ -2,7 +2,6 @@ import React from 'react';
 
 import PagesLayout from '../../elements/layouts/PagesLayouts';
 import { CoursesCard } from './coursesCard';
-import { IoIosArrowDown } from 'react-icons/io';
 import { CoursesCardProps } from '../../types/courses';
 import { useTranslation } from 'react-i18next';
 import { axiosRequest } from '../../api/api';
@@ -15,7 +14,7 @@ export const OurCourses = () => {
   const { t, i18n } = useTranslation();
 
   const getCourses = React.useCallback(async (lang: string) => {
-    const { data } = await axiosRequest(lang).get('/courses/courses/');
+    const { data } = await axiosRequest(lang).get(`/courses/courses`);
 
     if (data.length === 0) {
       return [];
@@ -37,13 +36,6 @@ export const OurCourses = () => {
         <p className="courses__text">{t('coursesText')}</p>
 
         <div className="courses__wrapper">{coursesList?.map((item) => <CoursesCard key={item.id} {...item} />)}</div>
-
-        <div className="courses__block">
-          <button className="courses__block_btn">
-            <p>{t('yet')}</p>
-            <IoIosArrowDown />
-          </button>
-        </div>
       </div>
     </PagesLayout>
   );

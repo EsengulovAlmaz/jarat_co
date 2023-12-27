@@ -2,7 +2,6 @@ import React from 'react';
 import PagesLayout from '../../elements/layouts/PagesLayouts';
 import { MoreCard } from '../../components/moreCard';
 
-import './index.scss';
 import { LearnCard } from '../../components/learnCard';
 import { ProgramCard } from '../../components/programCard';
 import { SpeakersCard } from '../../components/speakersCard';
@@ -12,6 +11,7 @@ import { axiosRequest } from '../../api/api';
 import { Loader } from '../../elements/sections/loader';
 import { useParams } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import './index.scss';
 
 interface IQuestions {
   id: number;
@@ -22,9 +22,13 @@ interface IQuestions {
 const MoreCourse = () => {
   const [courseMore, setCourseMore] = React.useState<CoursesCardProps | null>();
   const [answerList, setAnswerList] = React.useState<IQuestions[] | []>([]);
-  const [selectedId, setSelectedId] = React.useState<number>(0);
   const { id } = useParams();
   const { i18n } = useTranslation();
+  const [expanded, setExpanded] = React.useState<string | false>('panel1');
+
+  const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+    setExpanded(newExpanded ? panel : false);
+  };
 
   const getCourseMore = React.useCallback(
     async (lang: string) => {
@@ -94,7 +98,7 @@ const MoreCourse = () => {
 
           <div className="more_course__questions_block">
             {answerList.map((item) => (
-              <QuestionsCard key={item.id} {...item} setSelectedId={setSelectedId} selectedId={selectedId} />
+              <QuestionsCard key={item.id} {...item} expanded={expanded} handleChange={handleChange} />
             ))}
           </div>
         </div>

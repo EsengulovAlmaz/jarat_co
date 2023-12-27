@@ -13,6 +13,14 @@
   }
 }
 
+@media screen and (max-width: 768px) {
+  .program_card {
+    &__text {
+      width: 100%;
+    }
+  }
+}
+
 @media screen and (max-width: 425px) {
   .program_card {
     &__title {
@@ -20,7 +28,6 @@
     }
 
     &__text {
-      width: 100%;
       font-size: 12px;
       margin-top: 10px;
     }
