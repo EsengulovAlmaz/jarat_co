@@ -65,10 +65,18 @@
     }
   }
 
+  &__row {
+    display: flex;
+    align-items: center;
+  }
+
   &__lang {
     background: none;
+    padding: 8px;
     outline: none;
     color: #ffffff;
+    margin-left: 15px;
+    text-transform: uppercase;
   }
 
   &__burger {

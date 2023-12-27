@@ -11,10 +11,10 @@ import './index.scss';
 
 export const OurEvents = () => {
   const [eventsList, setEventsList] = React.useState<EventsCardProps[]>([]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const getEvents = React.useCallback(async () => {
-    const { data } = await axiosRequest.get('/events/');
+  const getEvents = React.useCallback(async (lang: string) => {
+    const { data } = await axiosRequest(lang).get('/events/');
 
     if (data.length === 0) {
       return [];
@@ -24,8 +24,8 @@ export const OurEvents = () => {
   }, []);
 
   React.useEffect(() => {
-    getEvents();
-  }, [getEvents]);
+    getEvents(i18n.language);
+  }, [getEvents, i18n.language]);
 
   if (eventsList.length === 0) return <Loader />;
 

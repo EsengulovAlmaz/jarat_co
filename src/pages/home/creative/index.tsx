@@ -3,6 +3,7 @@ import PagesLayout from '../../../elements/layouts/PagesLayouts';
 
 import './index.scss';
 import { useTranslation } from 'react-i18next';
+import { Button } from '@mui/material';
 
 interface ICreativeList {
   id: number;
@@ -142,14 +143,22 @@ export const Creative = () => {
       <div className="creative">
         <div className="creative__buttons">
           {CreativeList.map(({ id, logo, title }) => (
-            <div
+            <Button
+              style={{
+                color: '#fff',
+                borderRadius: '15px',
+                background: '#181a1e',
+                fontWeight: 600,
+                padding: '20px 0',
+                fontSize: '16px',
+              }}
               onClick={() => setActive(id)}
               key={id}
               className={`creative__btn ${active === id ? 'creative__active' : ''}`}
             >
               <img className="creative__btn_img" src={logo} alt="logo" />
               <p>{t(title)}</p>
-            </div>
+            </Button>
           ))}
         </div>
 

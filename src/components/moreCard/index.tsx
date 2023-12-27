@@ -46,7 +46,10 @@ export const MoreCard: React.FC<MoreCardProps> = ({
           </p>
         </div>
 
-        <a href="/" className="more_card__content_btn">
+        <a
+          href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0"
+          className="more_card__content_btn"
+        >
           Записаться
         </a>
       </div>

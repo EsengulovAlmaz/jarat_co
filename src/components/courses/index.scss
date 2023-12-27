@@ -20,22 +20,6 @@
     flex-direction: column;
     gap: 40px;
   }
-
-  &__block {
-    text-align: center;
-    margin-top: 20px;
-
-    &_btn {
-      color: #ffffff;
-      background: none;
-      transition: all 0.3s ease-in-out;
-      cursor: pointer;
-
-      &:hover {
-        color: #5b43e9;
-      }
-    }
-  }
 }
 
 @media screen and (max-width: 1024px) {

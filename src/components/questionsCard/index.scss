@@ -1,46 +1,16 @@
-.questions_card {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
-  margin-top: 20px;
-
-  &__block {
-    display: flex;
-    align-items: start;
-    gap: 15px;
-    cursor: pointer;
-  }
-
-  &__active {
-    transition: all 0.3s ease-in-out;
-    transform: rotate(45deg);
-  }
-
-  &__title {
-    font-size: 17px;
-    font-weight: 700;
-    margin-bottom: 20px;
-  }
-
-  &__description {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 16px;
-    font-weight: 500;
-    width: 70%;
-    margin: 0 0 40px 10px;
-  }
+.accordion {
+  background: none !important;
+  color: hsl(0, 0%, 100%) !important;
 }
 
-@media screen and (max-width: 425px) {
-  .questions_card {
+@media screen and (max-width: 768px) {
+  .accordion {
     &__title {
-      font-size: 12px;
-      font-weight: 600;
-      margin-bottom: 12px;
+      font-size: 12px !important;
     }
-
-    &__description {
-      font-size: 10px;
-      margin-bottom: 20px;
-      width: 100%;
+    &__text {
+      font-size: 12px !important;
+      width: 100% !important;
     }
   }
 }

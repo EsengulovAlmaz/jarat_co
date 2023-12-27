@@ -18,10 +18,10 @@ interface IPortfolio {
 export const OurPortfolio = () => {
   const [portfolioList, setPortfolioList] = React.useState<IPortfolio[]>([]);
   const [moreText, setMoreText] = React.useState<boolean>(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const getPortfolio = React.useCallback(async () => {
-    const { data } = await axiosRequest.get('/portfolios/');
+  const getPortfolio = React.useCallback(async (lang: string) => {
+    const { data } = await axiosRequest(lang).get('/portfolios/');
 
     if (!data) {
       return [];
@@ -31,8 +31,8 @@ export const OurPortfolio = () => {
   }, []);
 
   React.useEffect(() => {
-    getPortfolio();
-  }, [getPortfolio]);
+    getPortfolio(i18n.language);
+  }, [getPortfolio, i18n.language]);
 
   if (portfolioList.length === 0) return <Loader />;
 

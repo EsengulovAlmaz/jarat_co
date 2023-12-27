@@ -20,10 +20,10 @@ interface IDescriptions {
 
 const AboutUs = () => {
   const [aboutInfo, setAboutInfo] = React.useState<IRequest[]>([]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const getAbout = React.useCallback(async () => {
-    const { data } = await axiosRequest.get('/abouts/');
+  const getAbout = React.useCallback(async (lang: string) => {
+    const { data } = await axiosRequest(lang).get('/abouts/');
 
     if (data.length === 0) {
       return [];
@@ -33,8 +33,8 @@ const AboutUs = () => {
   }, []);
 
   React.useEffect(() => {
-    getAbout();
-  }, [getAbout]);
+    getAbout(i18n.language);
+  }, [getAbout, i18n.language]);
 
   if (aboutInfo.length === 0) return <Loader />;
 

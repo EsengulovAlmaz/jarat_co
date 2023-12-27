@@ -17,10 +17,10 @@ interface IPartnersList {
 
 export const Partners = () => {
   const [partnersList, setPartnersList] = React.useState<IPartnersList[]>([]);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
-  const getPartners = React.useCallback(async () => {
-    const { data } = await axiosRequest.get('/partners/');
+  const getPartners = React.useCallback(async (lang: string) => {
+    const { data } = await axiosRequest(lang).get('/partners/');
 
     if (!data) {
       return [];
@@ -30,8 +30,8 @@ export const Partners = () => {
   }, []);
 
   React.useEffect(() => {
-    getPartners();
-  }, [getPartners]);
+    getPartners(i18n.language);
+  }, [getPartners, i18n.language]);
 
   if (partnersList.length === 0) return <Loader />;
 

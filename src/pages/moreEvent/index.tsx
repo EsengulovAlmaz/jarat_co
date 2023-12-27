@@ -9,24 +9,29 @@ import { EventsCardProps } from '../../types/events';
 import { axiosRequest } from '../../api/api';
 
 import './index.scss';
+import { useTranslation } from 'react-i18next';
 
 const MoreEvents = () => {
   const [eventMore, setEventMore] = React.useState<EventsCardProps | null>();
   const { id } = useParams();
+  const { i18n } = useTranslation();
 
-  const getEventMore = React.useCallback(async () => {
-    const { data } = await axiosRequest.get(`/events/${id}`);
+  const getEventMore = React.useCallback(
+    async (lang: string) => {
+      const { data } = await axiosRequest(lang).get(`/events/${id}`);
 
-    if (!data) {
-      return [];
-    }
+      if (!data) {
+        return [];
+      }
 
-    setEventMore(data);
-  }, [id]);
+      setEventMore(data);
+    },
+    [id],
+  );
 
   React.useEffect(() => {
-    getEventMore();
-  }, [getEventMore]);
+    getEventMore(i18n.language);
+  }, [getEventMore, i18n.language]);
 
   if (!eventMore) return <Loader />;
 

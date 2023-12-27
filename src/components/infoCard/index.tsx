@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { axiosRequest } from '../../api/api';
 import { Loader } from '../../elements/sections/loader';
 import './index.scss';
+import { useTranslation } from 'react-i18next';
 
 interface InfoProps {
   url: string;
@@ -21,20 +22,24 @@ interface InfoMore {
 export const InfoCard: React.FC<InfoProps> = ({ url }) => {
   const [infoMore, setInfoMore] = React.useState<InfoMore | null>();
   const { id } = useParams();
+  const { i18n } = useTranslation();
 
-  const getInfoMore = React.useCallback(async () => {
-    const { data } = await axiosRequest.get(`${url}/${id}`);
+  const getInfoMore = React.useCallback(
+    async (lang: string) => {
+      const { data } = await axiosRequest(lang).get(`${url}/${id}`);
 
-    if (!data) {
-      return [];
-    }
+      if (!data) {
+        return [];
+      }
 
-    setInfoMore(data);
-  }, [id, url]);
+      setInfoMore(data);
+    },
+    [id, url],
+  );
 
   React.useEffect(() => {
-    getInfoMore();
-  }, [getInfoMore]);
+    getInfoMore(i18n.language);
+  }, [getInfoMore, i18n.language]);
 
   if (!infoMore) return <Loader />;
 
