@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './index.scss';
 import { useTranslation } from 'react-i18next';
 

@@ -26,7 +26,7 @@ const MoreCourse = () => {
   const { i18n } = useTranslation();
   const [expanded, setExpanded] = React.useState<string | false>('panel1');
 
-  const handleChange = (panel: string) => (event: React.SyntheticEvent, newExpanded: boolean) => {
+  const handleChange = (panel: string) => (_: React.SyntheticEvent, newExpanded: boolean) => {
     setExpanded(newExpanded ? panel : false);
   };
 

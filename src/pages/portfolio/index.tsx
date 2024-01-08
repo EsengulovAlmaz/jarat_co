@@ -1,4 +1,3 @@
-import React from 'react';
 import { OurPortfolio } from '../../components/portfolio';
 
 const Portfolio = () => {

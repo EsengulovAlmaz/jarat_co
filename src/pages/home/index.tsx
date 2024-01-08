@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Banner } from './banner';
 import { AboutUs } from './aboutUs';
 import { Cooperation } from './cooperation';

@@ -1,4 +1,3 @@
-import React from 'react';
 import PagesLayout from '../../layouts/PagesLayouts';
 
 import './index.scss';
