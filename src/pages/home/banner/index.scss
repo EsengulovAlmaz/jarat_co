@@ -1,0 +1,98 @@
+.banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 0;
+
+  &__content {
+    width: 50%;
+  }
+
+  &__title {
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 69.6px;
+    background: linear-gradient(88deg, #fff 0%, #5a43e8 43%, #5843e3 69%, #49288c 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+  }
+
+  &__text {
+    color: #c9c9c9;
+    font-size: 16px;
+    font-weight: 400;
+    margin-top: 20px;
+    line-height: 24px;
+  }
+
+  &__block {
+    width: 40%;
+
+    &_img {
+      position: relative;
+      width: 100%;
+      animation: banner-img 2s infinite alternate linear 0s;
+    }
+  }
+}
+
+@keyframes banner-img {
+  from {
+    top: -10px;
+  }
+  50% {
+    top: 10px;
+  }
+  to {
+    top: -10px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .banner {
+    &__title {
+      font-size: 42px;
+      line-height: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .banner {
+    padding-top: 30px;
+    flex-direction: column-reverse;
+
+    &__content {
+      width: 100%;
+      text-align: center;
+    }
+
+    &__title {
+      font-size: 30px;
+      line-height: normal;
+    }
+
+    &__block {
+      width: 50%;
+      height: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .banner {
+    &__title {
+      font-size: 20px;
+    }
+    &__text {
+      font-size: 13px;
+      line-height: normal;
+    }
+    &__block {
+      width: 210px;
+      height: 210px;
+    }
+  }
+}

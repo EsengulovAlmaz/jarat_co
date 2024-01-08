@@ -1,0 +1,95 @@
+.info_card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 0 10px 0;
+
+  &__content {
+    width: 45%;
+  }
+
+  &__title {
+    font-size: 70px;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__text {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 24px;
+    margin: 30px 0;
+  }
+
+  &__btn {
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 15px;
+    border-radius: 20px;
+    background: #5b43e9;
+    padding: 12px 15px;
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      color: #000000;
+      background: #ffffff;
+    }
+  }
+
+  &__block {
+    width: 30%;
+    height: 300px;
+
+    &_img {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info_card {
+    flex-direction: column-reverse;
+    padding: 30px 0;
+    gap: 40px;
+
+    &__content {
+      width: 100%;
+    }
+
+    &__block {
+      width: 100%;
+      height: 50vh;
+    }
+
+    &__title {
+      font-size: 50px;
+    }
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .info_card {
+    &__content {
+      text-align: center;
+    }
+
+    &__title {
+      font-size: 20px;
+    }
+
+    &__text {
+      font-size: 13px;
+      line-height: normal;
+    }
+    &__btn {
+      font-size: 12px;
+      padding: 10px 11px;
+    }
+    &__block {
+      height: 30vh;
+    }
+  }
+}

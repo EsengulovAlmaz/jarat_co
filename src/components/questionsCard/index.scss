@@ -1,0 +1,16 @@
+.accordion {
+  background: none !important;
+  color: hsl(0, 0%, 100%) !important;
+}
+
+@media screen and (max-width: 768px) {
+  .accordion {
+    &__title {
+      font-size: 12px !important;
+    }
+    &__text {
+      font-size: 12px !important;
+      width: 100% !important;
+    }
+  }
+}
