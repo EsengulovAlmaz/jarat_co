@@ -1,6 +1,9 @@
 .header {
-  position: relative;
-  padding: 50px 0;
+  position: sticky;
+  top: 0;
+  z-index: 14;
+  background: #00050f;
+  padding: 40px 0;
 
   &__wrapper {
     display: flex;
@@ -96,7 +99,7 @@
     transition: all 0.3s ease-in-out;
 
     &_active {
-      top: 90px;
+      top: 70px;
     }
 
     &_wrapper {
@@ -164,13 +167,12 @@
 
 @media screen and (max-width: 768px) {
   .header {
-    padding: 25px 0;
+    padding: 20px 0;
   }
 }
 
 @media screen and (max-width: 425px) {
   .header {
-    padding: 25px 0;
     &__logo {
       font-size: 16px;
     }

@@ -66,48 +66,46 @@ export const Header = () => {
   };
 
   return (
-    <div>
+    <div className="header">
       <PagesLayout>
-        <header className="header">
-          <div className="header__wrapper">
-            <Link to="/" className="header__logo" onClick={() => setMenu(false)}>
-              Jarat<span className="header__logo_co">.co</span>
-            </Link>
+        <header className="header__wrapper">
+          <Link to="/" className="header__logo" onClick={() => setMenu(false)}>
+            Jarat<span className="header__logo_co">.co</span>
+          </Link>
 
-            <ul className="header__list">
-              {headerList.map(({ id, title, path }) => (
-                <li key={id} className="header__list_item">
-                  <Link to={path} className={`header__list_link ${pathname === path ? 'header__list_active' : ''}`}>
-                    {t(title)}
-                  </Link>
-                </li>
+          <ul className="header__list">
+            {headerList.map(({ id, title, path }) => (
+              <li key={id} className="header__list_item">
+                <Link to={path} className={`header__list_link ${pathname === path ? 'header__list_active' : ''}`}>
+                  {t(title)}
+                </Link>
+              </li>
+            ))}
+            <a href="#contacts" className="header__list_link">
+              {t('contacts')}
+            </a>
+          </ul>
+
+          <div className="header__row">
+            <a
+              href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0"
+              className="header__btn"
+              target="_blank"
+            >
+              {t('haveProjects')}
+            </a>
+
+            <button onClick={() => setMenu(!menu)} className="header__burger">
+              <img className="header__burger_img" src={menu ? close : burger} alt="menu" />
+            </button>
+
+            <select className="header__lang" onChange={(e) => changeLanguage(e.target.value)}>
+              {languagesList.map(({ id, lang }) => (
+                <option key={id} className="header__lang_item">
+                  {lang}
+                </option>
               ))}
-              <a href="#contacts" className="header__list_link">
-                {t('contacts')}
-              </a>
-            </ul>
-
-            <div className="header__row">
-              <a
-                href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0"
-                className="header__btn"
-                target="_blank"
-              >
-                {t('haveProjects')}
-              </a>
-
-              <button onClick={() => setMenu(!menu)} className="header__burger">
-                <img className="header__burger_img" src={menu ? close : burger} alt="menu" />
-              </button>
-
-              <select className="header__lang" onChange={(e) => changeLanguage(e.target.value)}>
-                {languagesList.map(({ id, lang }) => (
-                  <option key={id} className="header__lang_item">
-                    {lang}
-                  </option>
-                ))}
-              </select>
-            </div>
+            </select>
           </div>
         </header>
       </PagesLayout>
