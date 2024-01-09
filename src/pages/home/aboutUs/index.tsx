@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import PagesLayout from '../../../elements/layouts/PagesLayouts';
+import { about_us } from '../../../assets/images';
 
 import './index.scss';
 
@@ -21,7 +22,7 @@ export const AboutUs = () => {
         </div>
 
         <div className="about_us__block">
-          <img src="./src/assets/images/about_us.svg" alt="about us" className="about_us__block_img" />
+          <img src={about_us} alt="about us" className="about_us__block_img" />
         </div>
       </div>
     </PagesLayout>

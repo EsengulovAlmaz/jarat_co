@@ -65,73 +65,75 @@ export const Header = () => {
   };
 
   return (
-    <PagesLayout>
-      <header className="header">
-        <div className="header__wrapper">
-          <Link to="/" className="header__logo" onClick={() => setMenu(false)}>
-            Jarat<span className="header__logo_co">.co</span>
-          </Link>
+    <div className="header_">
+      <PagesLayout>
+        <header className="header">
+          <div className="header__wrapper">
+            <Link to="/" className="header__logo" onClick={() => setMenu(false)}>
+              Jarat<span className="header__logo_co">.co</span>
+            </Link>
 
-          <ul className="header__list">
-            {headerList.map(({ id, title, path }) => (
-              <li key={id} className="header__list_item">
-                <Link to={path} className={`header__list_link ${pathname === path ? 'header__list_active' : ''}`}>
-                  {t(title)}
-                </Link>
-              </li>
-            ))}
-            <a href="#contacts" className="header__list_link">
-              {t('contacts')}
-            </a>
-          </ul>
-
-          <div className="header__row">
-            <a
-              href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0"
-              className="header__btn"
-              target="_blank"
-            >
-              {t('haveProjects')}
-            </a>
-
-            <button onClick={() => setMenu(!menu)} className="header__burger">
-              <img
-                className="header__burger_img"
-                src={`/src/assets/images/${menu ? 'close' : 'burger'}.svg`}
-                alt="menu"
-              />
-            </button>
-
-            <select className="header__lang" onChange={(e) => changeLanguage(e.target.value)}>
-              {languagesList.map(({ id, lang }) => (
-                <option key={id} className="header__lang_item">
-                  {lang}
-                </option>
-              ))}
-            </select>
-          </div>
-        </div>
-        {menu && (
-          <div className="header__menu">
-            <ul className="header__menu_list">
+            <ul className="header__list">
               {headerList.map(({ id, title, path }) => (
-                <li key={id} className="header__menu_item">
-                  <Link
-                    to={path}
-                    className={`header__menu_link ${pathname === path ? 'header__menu_active' : ''}`}
-                    onClick={() => setMenu(false)}
-                  >
+                <li key={id} className="header__list_item">
+                  <Link to={path} className={`header__list_link ${pathname === path ? 'header__list_active' : ''}`}>
                     {t(title)}
                   </Link>
                 </li>
               ))}
-              <a href="#contacts" className="header__menu_link" onClick={() => setMenu(false)}>
+              <a href="#contacts" className="header__list_link">
                 {t('contacts')}
               </a>
             </ul>
+
+            <div className="header__row">
+              <a
+                href="https://api.whatsapp.com/send/?phone=996999955000&text&type=phone_number&app_absent=0"
+                className="header__btn"
+                target="_blank"
+              >
+                {t('haveProjects')}
+              </a>
+
+              <button onClick={() => setMenu(!menu)} className="header__burger">
+                <img
+                  className="header__burger_img"
+                  src={`/src/assets/images/${menu ? 'close' : 'burger'}.svg`}
+                  alt="menu"
+                />
+              </button>
+
+              <select className="header__lang" onChange={(e) => changeLanguage(e.target.value)}>
+                {languagesList.map(({ id, lang }) => (
+                  <option key={id} className="header__lang_item">
+                    {lang}
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
-        )}
-      </header>
-    </PagesLayout>
+        </header>
+      </PagesLayout>
+
+      <div className={`header__menu ${menu ? 'header__menu_active' : ''}`}>
+        <ul className="header__menu_list">
+          {headerList.map(({ id, title, path }) => (
+            <li key={id} className="header__menu_item">
+              <Link
+                to={path}
+                className={`header__menu_link ${pathname === path ? 'header__menu_active' : ''}`}
+                onClick={() => setMenu(false)}
+              >
+                {t(title)}
+              </Link>
+            </li>
+          ))}
+          <a href="#contacts" className="header__menu_link" onClick={() => setMenu(false)}>
+            {t('contacts')}
+          </a>
+        </ul>
+        {menu && <div onClick={() => setMenu(!menu)} className="header__menu_wrapper"></div>}
+      </div>
+    </div>
   );
 };
