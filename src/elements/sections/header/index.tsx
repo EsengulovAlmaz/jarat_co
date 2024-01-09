@@ -66,7 +66,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="header">
+    <div>
       <PagesLayout>
         <header className="header">
           <div className="header__wrapper">
