@@ -1,5 +1,6 @@
-import './index.scss';
+import { cooperation } from '../../../assets/images';
 import { useTranslation } from 'react-i18next';
+import './index.scss';
 
 export const Cooperation = () => {
   const { t } = useTranslation();
@@ -24,7 +25,7 @@ export const Cooperation = () => {
         </div>
 
         <div className="cooperation__block">
-          <img src="./src/assets/images/cooperation.svg" alt="about us" className="cooperation__block_img" />
+          <img src={cooperation} alt="about us" className="cooperation__block_img" />
         </div>
       </div>
     </div>

@@ -1,9 +1,10 @@
 import React from 'react';
 import PagesLayout from '../../../elements/layouts/PagesLayouts';
-
-import './index.scss';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@mui/material';
+import { creative, creative1, creative2, creative3, creative4, creative5, education, it } from '../../../assets/images';
+
+import './index.scss';
 
 interface ICreativeList {
   id: number;
@@ -14,17 +15,17 @@ interface ICreativeList {
 const CreativeList: ICreativeList[] = [
   {
     id: 0,
-    logo: '/src/assets/images/it.svg',
+    logo: `${it}`,
     title: 'it',
   },
   {
     id: 1,
-    logo: '/src/assets/images/creative.svg',
+    logo: `${creative}`,
     title: 'creativeTitle',
   },
   {
     id: 2,
-    logo: '/src/assets/images/education.svg',
+    logo: `${education}`,
     title: 'education',
   },
 ];
@@ -49,13 +50,13 @@ const ContentList: IContentList[] = [
     blocks: [
       {
         id: 201,
-        logo: '/src/assets/images/creative1.svg',
+        logo: `${creative1}`,
         title: 'itSolutionsTitle1',
         text: 'itSolutionsText1',
       },
       {
         id: 202,
-        logo: '/src/assets/images/creative2.svg',
+        logo: `${creative2}`,
         title: 'itSolutionsTitle2',
         text: 'itSolutionsText2',
       },
@@ -67,13 +68,13 @@ const ContentList: IContentList[] = [
     blocks: [
       {
         id: 301,
-        logo: '/src/assets/images/creative3.svg',
+        logo: `${creative3}`,
         title: 'marketingTitle1',
         text: 'marketingText1',
       },
       {
         id: 302,
-        logo: '/src/assets/images/creative4.svg',
+        logo: `${creative4}`,
         title: 'marketingTitle2',
         text: 'marketingText2',
       },
@@ -85,19 +86,19 @@ const ContentList: IContentList[] = [
     blocks: [
       {
         id: 401,
-        logo: '/src/assets/images/creative5.svg',
+        logo: `${creative5}`,
         title: 'coursesTitle1',
         text: 'coursesText1',
       },
       {
         id: 402,
-        logo: '/src/assets/images/creative5.svg',
+        logo: `${creative5}`,
         title: 'coursesTitle2',
         text: 'coursesText2',
       },
       {
         id: 403,
-        logo: '/src/assets/images/creative5.svg',
+        logo: `${creative5}`,
         title: 'coursesTitle3',
         text: 'coursesText3',
       },

@@ -5,6 +5,7 @@ import { PartnersCard } from '../../components/partnersCard';
 import { useTranslation } from 'react-i18next';
 import { Loader } from '../../elements/sections/loader';
 import { axiosRequest } from '../../api/api';
+import { partners } from '../../assets/images';
 
 import './index.scss';
 
@@ -40,7 +41,7 @@ const Partners = () => {
       <div className="partners_page">
         <div className="partners_page__banner">
           <div className="partners_page__title">{t('cooperation')}</div>
-          <img className="partners_page__img" src="/src/assets/images/partners.svg" alt="partners" />
+          <img className="partners_page__img" src={partners} alt="partners" />
         </div>
 
         <div className="partners_page__wrapper">

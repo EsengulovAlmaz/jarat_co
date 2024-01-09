@@ -1,3 +1,4 @@
+import { banner_img } from '../../../assets/images';
 import PagesLayout from '../../../elements/layouts/PagesLayouts';
 
 import './index.scss';
@@ -18,7 +19,7 @@ export const Banner = () => {
         </div>
 
         <div className="banner__block">
-          <img className="banner__block_img" src="/src/assets/images/banner_img.svg" alt="image" />
+          <img className="banner__block_img" src={banner_img} alt="image" />
         </div>
       </div>
     </PagesLayout>

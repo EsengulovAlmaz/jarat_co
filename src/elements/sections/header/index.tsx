@@ -4,6 +4,7 @@ import PagesLayout from '../../layouts/PagesLayouts';
 import './index.scss';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
+import { burger, close } from '../../../assets/images';
 
 interface IHeaderList {
   id: number;
@@ -65,7 +66,7 @@ export const Header = () => {
   };
 
   return (
-    <div className="header_">
+    <div className="header">
       <PagesLayout>
         <header className="header">
           <div className="header__wrapper">
@@ -96,11 +97,7 @@ export const Header = () => {
               </a>
 
               <button onClick={() => setMenu(!menu)} className="header__burger">
-                <img
-                  className="header__burger_img"
-                  src={`/src/assets/images/${menu ? 'close' : 'burger'}.svg`}
-                  alt="menu"
-                />
+                <img className="header__burger_img" src={menu ? close : burger} alt="menu" />
               </button>
 
               <select className="header__lang" onChange={(e) => changeLanguage(e.target.value)}>

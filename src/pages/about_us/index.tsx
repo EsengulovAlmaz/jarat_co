@@ -1,11 +1,12 @@
 import React from 'react';
 
-import PagesLayout from '../../elements/layouts/PagesLayouts';
 import { useTranslation } from 'react-i18next';
 
-import './index.scss';
+import PagesLayout from '../../elements/layouts/PagesLayouts';
 import { axiosRequest } from '../../api/api';
 import { Loader } from '../../elements/sections/loader';
+import { mission } from '../../assets/images';
+import './index.scss';
 
 interface IRequest {
   id: number;
@@ -49,7 +50,7 @@ const AboutUs = () => {
           <div className="mission__content_text">{t('mission')}</div>
         </div>
         <div className="mission__block">
-          <img src="/src/assets/images/mission.svg" alt="image" className="mission__block_img" />
+          <img src={mission} alt="image" className="mission__block_img" />
         </div>
       </div>
 
